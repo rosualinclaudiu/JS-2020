@@ -12,3 +12,13 @@ function welcome() {
 // var message "Hello"
 // var name "Alin"
 // alert(message+name)
+
+if (isLate) {
+    alert("Go home")
+}
+
+if (isLate) {
+    
+} else {
+    alert("Continue")
+}
