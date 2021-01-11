@@ -8,7 +8,7 @@ let dacia = {
     averageConsumption: 11.5,
     batteryCapacity: 150,
     batteryCharge: 150,
-    paint: function (color) {
+    paint /* : function  - nu este oblogatoriu in interiorul unui element*/ (color) {
         this.color = color
 
     },
