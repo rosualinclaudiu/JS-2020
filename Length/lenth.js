@@ -4,4 +4,4 @@ document.getElementById("text")
     text = input.value
     document.getElementById("length").innerText = text.length
 
-})
+} )
