@@ -4,21 +4,19 @@ body {
 }
 @keyframes bubble {
     to {
-        transform: translateY(-5vh) scale(2);
+        transform: translateY(-5vh) scale(4);
     }
 }
 .bubble {
-    height: 1em;
-    width: 1em;
+    height: 0.5em;
+    width: 0.5em;
     position: absolute;
     border-color: tomato;
-    border-width: 2px;
+    border-width: 1px;
     border-style: solid;
     border-radius: 50%;
     transform: translateY(98vh);
     animation-name: bubble;
     animation-duration: 3s;
-}
-div1 {
-    transform: translateX(3vw);
+    animation-timing-function: linear;
 }
