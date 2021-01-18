@@ -23,3 +23,16 @@ for (const fruit of fruits) {
     listItem.innerText = fruit
     document.querySelector("ul").appendChild(listItem)
 } // for of
+
+fruits.forEach(fruit => {
+    listItem = document.createElement("li")
+    listItem.innerText = fruit
+    document.querySelector("ul").appendChild(listItem)
+}) // for each
+
+for (const fruit in fruits) {
+    listItem = document.createElement("li")
+    listItem.innerText = fruit
+    document.querySelector("ul").appendChild(listItem) 
+    // for in
+}
