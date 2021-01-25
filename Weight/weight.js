@@ -9,7 +9,7 @@ NEPTUNE = { name: "Neptune", mass: 1.024e+26, radius: 2.4746e7 }
 
 G = 6.67300E-11
 
-var planets = { MERCURY, VENUS, EARTH, MARS, JUPITER, SATURN, URANUS, NEPTUNE }
+var planets = [MERCURY, VENUS, EARTH, MARS, JUPITER, SATURN, URANUS, NEPTUNE]
 
 function surfaceGravity(planet) {
     return G * planet.mass / (planet.radius * planet.radius)
@@ -27,7 +27,7 @@ function calculateAndShowWeights() {
     let weightsOnPlanets = planets.map(planet => surfaceWeight(mass, planet))
 
     for (let index = 0; index < planets.length; index++) {
-        let = planet = planets[index];
+        let planet = planets[index];
         let weightOnPlanet = weightsOnPlanets[index]
         // cream un nou rand
         let row = document.createElement("tr")
