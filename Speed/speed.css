@@ -15,9 +15,9 @@ input[type="button"] {
 }
 .letter {
     position: absolute;
-    top: 10em;
+    /* top: 10em;
     right: 10em;
-    background-color: tomato;
+    background-color: tomato; */
     padding: 0.5em;
     border-radius: 10%;
     font-family: monospace;
