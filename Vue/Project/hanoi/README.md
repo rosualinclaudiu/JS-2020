@@ -1,4 +1,4 @@
-# hanoi1
+# hanoi
 
 ## Project setup
 ```
