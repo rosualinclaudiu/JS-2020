@@ -1,5 +1,7 @@
 <template>
+
 <Hanoi></Hanoi>
+
 </template>
 
 <script>
@@ -9,8 +11,7 @@ import {Hanoi} from './components/Hanoi.vue'
 export default {
   name: 'App',
   components: {
-    Hanoi
-    
+    Hanoi    
   }
 }
 </script>
