@@ -6,7 +6,7 @@
 
 <script>
 
-import {Hanoi} from './components/Hanoi.vue'
+import Hanoi from './components/Hanoi.vue'
 
 export default {
   name: 'App',

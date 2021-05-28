@@ -3,7 +3,7 @@
       <div 
       v-for="tower in game.towers"
       :key="tower.id"
-      class=:tower
+      class="tower"
       >
       <div
         v-for="disk in tower.disks"
@@ -39,13 +39,23 @@ export default {
     width: 80vw;
     display: flex;
     justify-content: space-around;
+    align-items: flex-end;
 }
 .tower {
     width: 30%;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
+    height: 50%;
 
+}
+.tower::before {
+    content: '';
+    background-color: brown;
+    height: 20%;
+    width: 0.5em;
+    position: absolute;
+    z-index: -1;
 }
 .disk {
     height: 1em;
