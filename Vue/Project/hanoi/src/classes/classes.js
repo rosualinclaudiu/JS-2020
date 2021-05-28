@@ -70,18 +70,19 @@ class Game {
     }
     initialDisks() {
         let disks = []
-        for (let index = 1; index <= this.numberOfDisks; index++) // ?
-            disks.push(new Disk(index, Color.random()))
+        for (let index = 1; index <= this.numberOfDisks; index++) {
+            disks.push(new Disk(index, Color.random())) 
+        }
         return disks.reverse()
     }
     make(move) {
-        let fromTower = this.towers.find(tower => tower.id == move.fromTowerId)
+        let fromTower = this.towers.find(tower => tower.id == move.fromTowerId)  
         let toTower = this.towers.find(tower => tower.id == move.toTowerId)
         let disk = fromTower.take()
         toTower.put(disk)
     }
     canMake(move) {
-        let fromTower = this.towers.find(tower => tower.id == move.fromTowerId)
+        let fromTower = this.towers.find(tower => tower.id == move.fromTowerId)  
         let toTower = this.towers.find(tower => tower.id == move.toTowerId)
         let disk = fromTower.topDisk()
         return toTower.canPut(disk)
