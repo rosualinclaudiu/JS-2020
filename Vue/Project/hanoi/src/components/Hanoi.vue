@@ -47,4 +47,7 @@ export default {
     align-items: center;
 
 }
+.disk {
+    height: 1em;
+}
 </style>
