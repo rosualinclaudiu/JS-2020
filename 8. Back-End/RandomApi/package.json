@@ -4,10 +4,10 @@
   "description": "Generate random numbers",
   "main": "index.js",
   "scripts": {
-    "start": "node_modules.nodemon/bin/nodemon.js",
+    "start": "node_modules/nodemon/bin/nodemon.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Alyn",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
