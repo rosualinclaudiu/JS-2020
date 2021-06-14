@@ -5,7 +5,7 @@ const port = 8080
 storage = []
 
 function createShortUri(req, resp) {
-    
+
 }
 
 function redirectToLongUri(req, resp) {
@@ -26,8 +26,7 @@ app.use(express.json())
 
 // definim rutele
 app.post('/short', createShortUri)
-app.get('/short/:id', redirectLongUri)
-
+app.get('/short/:id', redirectToLongUri)
 
 app.listen(
     port,
