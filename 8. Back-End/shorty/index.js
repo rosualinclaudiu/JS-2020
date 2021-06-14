@@ -2,17 +2,32 @@ const express = require('express')
 const app = express()
 const port = 8080
 
-function random(min, max) {
-    console.log(`min = ${min}, max = ${max}`)
-    return { 
-        number: Math.floor(Math.random() * (max - min)) + min
-    }
+storage = []
+
+function createShortUri(req, resp) {
+    
 }
 
-// /random?min={x}&max={y}
-app.get('/random', (req, resp) => { 
-    resp.send(random(parseInt(req.query.min), parseInt(req.query.max))) 
-})
+function redirectToLongUri(req, resp) {
+    const longUri = req.body.longUri
+    const id = generateId()
+    storage[id] = longUri
+    resp.send({
+        shortUri: `http://localhost:${port}/short/${id}`
+    })
+}
+
+function generateId() {
+    return Math.floor(Math.random() * 100000) + 10000
+}
+
+// inregistram middleware care sa parseze json
+app.use(express.json())
+
+// definim rutele
+app.post('/short', createShortUri)
+app.get('/short/:id', redirectLongUri)
+
 
 app.listen(
     port,
