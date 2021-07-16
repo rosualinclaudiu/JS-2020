@@ -7,8 +7,8 @@ class Piece {
     }
     static z() {
         piece = new Piece()
-        piece.type = '0'
-        return piece
+        piece.type = '0'   
+        return piece 
     }
 }
 
@@ -41,21 +41,21 @@ class Cell {
 
 class Board {
     grid = [
-        [new Cell(new Position(0,0)), new Cell(new Position(0,1)), new Cell(new Position(0,2))],
-        [new Cell(new Position(1,0)), new Cell(new Position(1,1)), new Cell(new Position(1,2))],
-        [new Cell(new Position(2,0)), new Cell(new Position(2,1)), new Cell(new Position(2,2))]
+        [new Cell(new Position(0,0)), new Cell(new Position(0,1)), new Cell(new Position(0,2))], 
+        [new Cell(new Position(1,0)), new Cell(new Position(1,1)), new Cell(new Position(1,2))], 
+        [new Cell(new Position(2,0)), new Cell(new Position(2,1)), new Cell(new Position(2,2))],
     ]
-    putPiece(piece, Position) {
-        this.grid[Position.line][Position.column].setContent(piece)
+    putPiece(piece, position) {
+        this.grid[position.line][position.column].setContent(piece)
     }
-    hasPiece(Position) {
-        return this.grid[Position.line][Position.column].content !== null    
+    hasPiece(position) {
+        return this.grid[position.line][position.column].isNotEmpty()
     }
     everyPosition(positions, callback) {
         return positions.every((position) => callback(grid[position.line][position.column]))
     }
     getAllCells() {
-        // return [...grid[0],...grid[1], ...grid[2]]
+        // return [...grid[0], ...grid[1], ...grid[2]]
         return [].concat(...grid)
     }
 }
@@ -73,30 +73,26 @@ class Game {
     currentPlayer
 
     constructor() {
-        this.board = Board()
+        this.board = new Board()
         this.players = [
             new Player(Piece.x()),
             new Player(Piece.z())
         ]
-        this.currentPlayer = this.players[0]
+        this.currentPlayer = 0
     }
 
-    move(Position) {
-        if(this.board.hasPiece(Position)) {
+    move(position) {
+        if(this.board.hasPiece(position)) {
             throw 'Illegal move'
         }
         // punem piesa jucatorului curent pe pozitie
-        this.board.putPiece(this.currentPlayer.piece, Position)
+        this.board.putPiece(this.players[this.currentPlayer].piece, position)
         // schimbam jucatorul curent
         this.currentPlayer = !this.currentPlayer
     }
 
     isOver() {
-        // linia "n" este completa
-        // coloana "n" este completa
-        // diagonala / este completa
-        // diagonala \ este completa
-        this.lineIsComplete(0)
+        return this.lineIsComplete(0)
         || this.lineIsComplete(1)
         || this.lineIsComplete(2)
         || this.columnIsComplete(0)
@@ -107,18 +103,18 @@ class Game {
     }
 
     lineIsComplete(line) {
-        const positions = [
+        return this.checkComplete([
             new Position(line, 0),
             new Position(line, 1),
-            new Position(line, 2)
-        ]
+            new Position(line, 2),
+        ])
     }
 
     columnIsComplete(column) {
         return this.checkComplete([
             new Position(0, column),
             new Position(1, column),
-            new Position(2, column)
+            new Position(2, column),
         ])
     }
 
@@ -126,7 +122,7 @@ class Game {
         return this.checkComplete([
             new Position(0, 0),
             new Position(1, 1),
-            new Position(2, 2)
+            new Position(2, 2),
         ])
     }
 
@@ -134,19 +130,19 @@ class Game {
         return this.checkComplete([
             new Position(0, 2),
             new Position(1, 1),
-            new Position(2, 0)
+            new Position(2, 0),
         ])
     }
-
 
     checkComplete(positions) {
         return this.board.everyPosition(
             positions, (piece) => piece == this.players[0].piece 
-            ) ||
-            this.board.everyPosition(
-                positions, (piece) => piece == this.players[1].piece
-            )
+        ) || 
+        this.board.everyPosition(
+            positions, (piece) => piece == this.players[1].piece 
+        )
     }
+    
 }
 
 new Vue({
@@ -159,12 +155,12 @@ new Vue({
     template: `
         <div class="game">
             <div class="board">
-                <div
+                <div 
                     v-for="cell in game.board.getAllPieces()"
                     class="cell"
-                    @click="click()"
+                    @click="click(cell.position)"
                 >
-                    <span v-if="cell.type == null">
+                    <span v-if="cell == null">
                     </span>
                     <span v-if="cell.type == 'x'">
                         X
@@ -173,7 +169,7 @@ new Vue({
                         0
                     </span>
                 </div>
-            </div>
-        </div> 
+            </div>    
+        </div>
     `
 })
