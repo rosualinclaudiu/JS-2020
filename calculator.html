@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicatie pentru fectuarea operatiilor matematice de baza</title>
+</head>
+
+<body>
+    <script>
+        var number_a = prompt("Please enter a value for number a: ");
+        var operation = prompt("Please enter a symbol for the operation you want to make: ");
+        var number_b = prompt("Please enter a value for number b: ");
+
+        var operand1 = parseFloat(number_a);
+        var operand2 = parseFloat(number_b);
+
+        if (!isNaN(operand1) && !isNaN(operand2)) {
+            if (operation == '+') {
+                var result = operand1 + operand2;
+                alert("Result is: " + result);
+            } else if (operation == '-') {
+                var result = operand1 - operand2;
+                alert("Result is: " + result);
+            } else if (operation == '*') {
+                var result = operand1 * operand2;
+                alert("Result is: " + result);
+            } else if (operation == '/') {
+                if (operand2 != 0) {
+                    var result = operand1 / operand2;;
+                    alert("Result is: " + result);
+                } else {
+                    alert("division by 0 is not possible");
+                }
+            } else {
+                alert("operation " + operation + " is not an elementary one");
+            }
+        } else {
+            alert("The value of one of the operands is not numeric");
+        }
+    </script>
+</body>
+
+</html>
